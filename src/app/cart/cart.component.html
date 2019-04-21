@@ -1,0 +1,4 @@
+<div *ngFor="let employee of selectedEmployees, index as i">
+    <h5>{{i}}) {{employee.name}}</h5>
+    <button (click)="remove(i)">Remove</button>
+  </div>

@@ -59,4 +59,36 @@
   </form>
 </div>
 
+<div *ngIf="displayCondition; then thenBlock else elseBlock">
+</div>
+
+<ng-template #thenBlock>
+  <h5>Then Block</h5>
+</ng-template>
+
+<ng-template #elseBlock>
+  <h5>Else Block</h5>
+</ng-template>
+
+<span [ngSwitch]="color">
+<p *ngSwitchCase="'red'"> 
+<!-- Dont forget single quotes inside double quotes -->
+  You picked red
+</p>
+<p *ngSwitchCase="'blue'">
+  You picked blue
+</p>
+<p *ngSwitchDefault>
+  None of the above
+</p>
+</span>
+
+<div *ngFor="let c of colors; index as i">
+  <p>{{i}}) {{c}}</p>
+</div>
+
+<div *ngFor="let employee of employees">
+  <p>{{employee.phone}}</p>
+</div>
+
 <router-outlet></router-outlet>

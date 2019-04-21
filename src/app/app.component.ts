@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from './user';
 import { EnrollmentService } from './enrollment.service';
+import { EmployeeService } from './employee.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,10 @@ export class AppComponent {
   today = Date.now();
   value = 'Clear Me';
   topicHasError = true;
+  displayCondition = true;
+  color = 'red';
+  colors = ['red', 'blue', 'green', 'yellow'];
+  employees = [];
 
   topics = ['MongoDB', 'Express', 'Angular', 'Node'];
 
@@ -28,7 +33,11 @@ export class AppComponent {
     }
   }
 
-  constructor(private _enrollmentService: EnrollmentService) {}
+  constructor(private _enrollmentService: EnrollmentService, private _employeeService: EmployeeService) {}
+
+  ngOnInit(): void {
+    this.employees = this._employeeService.getEmployees();
+  }
 
   onSubmit(){
     console.log(this.userModel);
